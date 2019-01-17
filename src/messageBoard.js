@@ -14,7 +14,7 @@ MessageBoard.prototype.convertToHtml = function() {
    var ul = document.createElement('ul');
    var listLength = this.messagesList.length;
    for (var i = 0; i < listLength; i++) {
-    ul.appendChild(this.messagesList[i].convertMessage());
+    ul.prepend(this.messagesList[i].convertMessage());
    };
 
    return ul;
