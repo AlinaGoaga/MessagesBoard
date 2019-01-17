@@ -6,9 +6,9 @@ let messageboard = new MessageBoard();
     var div = document.getElementById("message_board");
 
   button.addEventListener("click", function() {
-      div.innerHTML = ""
+      div.innerHTML = "";
       let message = new Message(textbox.value);
+      textbox.value = "";
       messageboard.add(message);
-      messageboard.convertToHtml;
       div.appendChild(messageboard.convertToHtml());
   });
