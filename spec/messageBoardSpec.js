@@ -13,6 +13,12 @@ describe("MessageBoard", function() {
     expect(messageboard.messagesList).toContain(message1);
   });
 
+  it("is able to remove messages from the board", function() {
+    messageboard.add(message1);
+    messageboard.delete(message1);
+    expect(messageboard.messagesList).not.toContain(message1);
+  });
+
   it("holds a list of messages", function() {
     messageboard.add(message1);
     messageboard.add(message2);

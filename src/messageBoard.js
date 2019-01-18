@@ -6,6 +6,11 @@ MessageBoard.prototype.add = function(message) {
   this.messagesList.push(message);
 };
 
+MessageBoard.prototype.delete = function(message) {
+  var index = this.messagesList.indexOf(message);
+  this.messagesList.splice(index,1);
+};
+
 MessageBoard.prototype.getList = function() {
   return this.messagesList;
 };

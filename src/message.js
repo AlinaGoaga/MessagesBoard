@@ -12,8 +12,13 @@ Message.prototype.listTime = function() {
 };
 
 Message.prototype.convertMessage = function() {
+  var delete_button = document.createElement("button");
+  delete_button.innerHTML = "Delete message";
+  delete_button.className = "delete_button";
+  delete_button.id = this.time;
   const li = document.createElement('li');
   const node = document.createTextNode(`${this.text} at ${this.time}`);
   li.appendChild(node);
+  li.appendChild(delete_button);
   return li;
 };
