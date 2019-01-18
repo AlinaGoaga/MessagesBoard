@@ -1,10 +1,14 @@
-function Message(text) {
+function Message(text, time = Date()) {
   this.text = text;
-  this.time = Date();
+  this.time = time;
 }
 
 Message.prototype.listMessage = function() {
   return this.text;
+};
+
+Message.prototype.listTime = function() {
+  return this.time;
 };
 
 Message.prototype.convertMessage = function() {
