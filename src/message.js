@@ -14,8 +14,13 @@ Message.prototype.listTime = function() {
 Message.prototype.convertMessage = function() {
   var delete_button = document.createElement("button");
   delete_button.innerHTML = "Delete message";
-  delete_button.className = "delete_button";
-  delete_button.id = this.time;
+  var current_message = this;
+
+  delete_button.addEventListener('click', function() {
+    var event = new CustomEvent('delete_element', { detail: current_message } )
+    document.dispatchEvent(event);
+  });
+
   const li = document.createElement('li');
   const node = document.createTextNode(`${this.text} at ${this.time}`);
   li.appendChild(node);

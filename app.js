@@ -16,7 +16,13 @@ function initialize() {
     messageboard.add(message);
     div.appendChild(messageboard.convertToHtml());
   });
- 
+
+  document.addEventListener('delete_element', function(element) {
+    messageboard.delete(element);
+    div.innerHTML = '';
+    div.appendChild(messageboard.convertToHtml());
+  })
+
 }
 
  document.addEventListener("DOMContentLoaded", initialize);
