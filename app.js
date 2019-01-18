@@ -17,8 +17,8 @@ function initialize() {
     div.appendChild(messageboard.convertToHtml());
   });
 
-  document.addEventListener('delete_element', function(element) {
-    messageboard.delete(element);
+  document.addEventListener('delete_element', function(event) {
+    messageboard.delete(event.detail);
     div.innerHTML = '';
     div.appendChild(messageboard.convertToHtml());
   })

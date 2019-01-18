@@ -15,9 +15,8 @@ Message.prototype.convertMessage = function() {
   var delete_button = document.createElement("button");
   delete_button.innerHTML = "Delete message";
   var current_message = this;
-
   delete_button.addEventListener('click', function() {
-    var event = new CustomEvent('delete_element', { detail: current_message } )
+    var event = new CustomEvent('delete_element', { detail: current_message } );
     document.dispatchEvent(event);
   });
 
