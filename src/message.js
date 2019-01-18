@@ -12,17 +12,23 @@ Message.prototype.listTime = function() {
 };
 
 Message.prototype.convertMessage = function() {
-  var delete_button = document.createElement("button");
-  delete_button.innerHTML = "Delete message";
-  var current_message = this;
-  delete_button.addEventListener('click', function() {
-    var event = new CustomEvent('delete_element', { detail: current_message } );
-    document.dispatchEvent(event);
-  });
 
   const li = document.createElement('li');
   const node = document.createTextNode(`${this.text} at ${this.time}`);
   li.appendChild(node);
-  li.appendChild(delete_button);
+  li.appendChild(this.createDeleteButton());
   return li;
+};
+
+Message.prototype.createDeleteButton =  function() {
+
+  var delete_button = document.createElement("button");
+  delete_button.innerHTML = "Delete message";
+  delete_button.addEventListener('click', this.createEventListener);
+  return delete_button;
+}
+
+Message.prototype.createEventListener = function() {
+  var event = new CustomEvent('delete_element', { detail: this} );
+  document.dispatchEvent(event);
 };
