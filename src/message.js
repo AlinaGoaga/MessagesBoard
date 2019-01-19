@@ -12,7 +12,6 @@ Message.prototype.listTime = function() {
 };
 
 Message.prototype.convertMessage = function() {
-
   const li = document.createElement('li');
   const node = document.createTextNode(`${this.text} at ${this.time}`);
   li.appendChild(node);
@@ -21,14 +20,13 @@ Message.prototype.convertMessage = function() {
 };
 
 Message.prototype.createDeleteButton =  function() {
-
   var delete_button = document.createElement("button");
   delete_button.innerHTML = "Delete message";
-  delete_button.addEventListener('click', this.createEventListener);
+  var current_message = this;
+  // "this" will reference the "li" element once it goes through the below code!
+  delete_button.addEventListener('click', function() {
+    var event = new CustomEvent('delete_element', { detail: current_message } );
+    document.dispatchEvent(event);
+  });
   return delete_button;
 }
-
-Message.prototype.createEventListener = function() {
-  var event = new CustomEvent('delete_element', { detail: this} );
-  document.dispatchEvent(event);
-};
